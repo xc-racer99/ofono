@@ -330,6 +330,8 @@ builtin_modules += samsungipcmodem
 builtin_sources += \
 	drivers/samsungipcmodem/samsungipcmodem.c \
 	drivers/samsungipcmodem/samsungipcmodem.h
+builtin_cflags += @SAMSUNGIPC_CFLAGS@
+builtin_libadd += @SAMSUNGIPC_LIBS@
 endif
 
 if ATMODEM

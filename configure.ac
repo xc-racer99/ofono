@@ -170,6 +170,12 @@ AM_CONDITIONAL(MBIMMODEM, test "${enable_mbimmodem}" != "no")
 AC_ARG_ENABLE(samsungipc, AC_HELP_STRING([--disable-samsungipcmodem],
 				[disable Samsung IPC modem support]),
 					[enable_samsungipc=${enableval}])
+if (test "${enable_samsungipc}" != "no"); then
+	PKG_CHECK_MODULES(SAMSUNGIPC, samsung-ipc >= 0.3.2, dummy=yes,
+			AC_MSG_ERROR(Samsung IPC library >= 0.3.2 is required))
+fi
+AC_SUBST(SAMSUNGIPC_CFLAGS)
+AC_SUBST(SAMSUNGIPC_LIBS)
 AM_CONDITIONAL(SAMSUNGIPCMODEM, test "${enable_samsungipc}" != "no")
 
 AC_ARG_ENABLE(bluetooth, AC_HELP_STRING([--disable-bluetooth],
