@@ -23,3 +23,5 @@ extern void samsungipc_devinfo_init(void);
 extern void samsungipc_devinfo_exit(void);
 extern void samsungipc_sim_init(void);
 extern void samsungipc_sim_exit(void);
+extern void samsungipc_netreg_init(void);
+extern void samsungipc_netreg_exit(void);

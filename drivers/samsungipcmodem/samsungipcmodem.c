@@ -32,11 +32,13 @@ static int samsungipcmodem_init(void)
 {
 	samsungipc_devinfo_init();
 	samsungipc_sim_init();
+	samsungipc_netreg_init();
 	return 0;
 }
 
 static void samsungipcmodem_exit(void)
 {
+	samsungipc_netreg_exit();
 	samsungipc_sim_exit();
 	samsungipc_devinfo_exit();
 }
