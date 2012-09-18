@@ -25,3 +25,5 @@ extern void samsungipc_sim_init(void);
 extern void samsungipc_sim_exit(void);
 extern void samsungipc_netreg_init(void);
 extern void samsungipc_netreg_exit(void);
+extern void samsungipc_voicecall_init(void);
+extern void samsungipc_voicecall_exit(void);
