@@ -35,11 +35,13 @@ static int samsungipcmodem_init(void)
 	samsungipc_netreg_init();
 	samsungipc_voicecall_init();
 	samsungipc_gprs_init();
+	samsungipc_gprs_context_init();
 	return 0;
 }
 
 static void samsungipcmodem_exit(void)
 {
+	samsungipc_gprs_context_exit();
 	samsungipc_gprs_exit();
 	samsungipc_voicecall_exit();
 	samsungipc_netreg_exit();
