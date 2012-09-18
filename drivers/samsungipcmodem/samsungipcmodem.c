@@ -31,11 +31,13 @@
 static int samsungipcmodem_init(void)
 {
 	samsungipc_devinfo_init();
+	samsungipc_sim_init();
 	return 0;
 }
 
 static void samsungipcmodem_exit(void)
 {
+	samsungipc_sim_exit();
 	samsungipc_devinfo_exit();
 }
 
