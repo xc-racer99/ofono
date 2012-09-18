@@ -335,7 +335,8 @@ builtin_sources += \
 	drivers/samsungipcmodem/devinfo.c \
 	drivers/samsungipcmodem/sim.c \
 	drivers/samsungipcmodem/network-registration.c \
-	drivers/samsungipcmodem/voicecall.c
+	drivers/samsungipcmodem/voicecall.c \
+	drivers/samsungipcmodem/gprs.c
 builtin_cflags += @SAMSUNGIPC_CFLAGS@
 builtin_libadd += @SAMSUNGIPC_LIBS@
 endif

@@ -27,3 +27,5 @@ extern void samsungipc_netreg_init(void);
 extern void samsungipc_netreg_exit(void);
 extern void samsungipc_voicecall_init(void);
 extern void samsungipc_voicecall_exit(void);
+extern void samsungipc_gprs_init(void);
+extern void samsungipc_gprs_exit(void);
