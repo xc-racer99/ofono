@@ -332,7 +332,8 @@ builtin_sources += \
 	drivers/samsungipcmodem/samsungipcmodem.h \
 	drivers/samsungipcmodem/ipc.c \
 	drivers/samsungipcmodem/ipc.h \
-	drivers/samsungipcmodem/devinfo.c
+	drivers/samsungipcmodem/devinfo.c \
+	drivers/samsungipcmodem/sim.c
 builtin_cflags += @SAMSUNGIPC_CFLAGS@
 builtin_libadd += @SAMSUNGIPC_LIBS@
 endif
