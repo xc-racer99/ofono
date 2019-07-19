@@ -51,13 +51,9 @@ struct ipc_request {
 };
 
 struct ipc_device {
-	int ref_count;
-	bool close_on_unref;
 	guint fmt_watch;
 	guint rfs_watch;
 	guint write_watch;
-	ipc_debug_func_t debug_func;
-	void *debug_data;
 	struct ipc_client *fmt_client;
 	struct ipc_client *rfs_client;
 	uint8_t next_id;
@@ -262,12 +258,10 @@ struct ipc_device *ipc_device_new(struct ipc_client *fmt_client,
 	if (device == NULL)
 		return NULL;
 
-	device->ref_count = 1;
 	device->next_id = 1;
 	device->next_watch_id = 1;
 	device->fmt_client = fmt_client;
 	device->rfs_client = rfs_client;
-	device->close_on_unref = false;
 	device->wait_queue = g_queue_new();
 	device->notification_watches = g_list_alloc();
 
@@ -300,16 +294,6 @@ struct ipc_device *ipc_device_new(struct ipc_client *fmt_client,
 	return device;
 }
 
-struct ipc_device *ipc_device_ref(struct ipc_device *device)
-{
-	if (device == NULL)
-		return NULL;
-
-	__sync_fetch_and_add(&device->ref_count, 1);
-
-	return device;
-}
-
 static void free_notification_watch(gpointer data)
 {
 	struct notication_watch *watch = data;
@@ -317,12 +301,9 @@ static void free_notification_watch(gpointer data)
 	free(watch);
 }
 
-void ipc_device_unref(struct ipc_device *device)
+void ipc_device_close(struct ipc_device *device)
 {
 	if (device == NULL)
-		return;
-
-	if (__sync_sub_and_fetch(&device->ref_count, 1))
 		return;
 
 	ofono_debug("device %p free", device);
@@ -449,22 +430,4 @@ int ipc_device_enqueue_message(struct ipc_device *device,
 		g_queue_push_tail(device->wait_queue, req);
 
 	return req->id;
-}
-
-void ipc_device_set_debug(struct ipc_device *device,
-				ipc_debug_func_t func, void *user_data)
-{
-	if (device == NULL)
-		return;
-
-	device->debug_func = func;
-	device->debug_data = user_data;
-}
-
-void ipc_device_set_close_on_unref(struct ipc_device *device, bool do_close)
-{
-	if (device == NULL)
-		return;
-
-	device->close_on_unref = do_close;
 }
