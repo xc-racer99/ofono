@@ -31,3 +31,5 @@ extern void samsungipc_gprs_init(void);
 extern void samsungipc_gprs_exit(void);
 extern void samsungipc_gprs_context_init(void);
 extern void samsungipc_gprs_context_exit(void);
+extern void samsungipc_sms_init(void);
+extern void samsungipc_sms_exit(void);

@@ -36,6 +36,7 @@ static int samsungipcmodem_init(void)
 	samsungipc_voicecall_init();
 	samsungipc_gprs_init();
 	samsungipc_gprs_context_init();
+	samsungipc_sms_init();
 	return 0;
 }
 
@@ -47,6 +48,7 @@ static void samsungipcmodem_exit(void)
 	samsungipc_netreg_exit();
 	samsungipc_sim_exit();
 	samsungipc_devinfo_exit();
+	samsungipc_sms_exit();
 }
 
 OFONO_PLUGIN_DEFINE(samsungipcmodem, "Samsung IPC modem driver", VERSION,
