@@ -328,6 +328,7 @@ static void samsungipc_post_online(struct ofono_modem *modem)
 	DBG("%p", modem);
 
 	ofono_netreg_create(modem, 0, "samsungipcmodem", data->device);
+	ofono_sms_create(modem, 0, "samsungipcmodem", data->device);
 	ofono_voicecall_create(modem, 0, "samsungipcmodem", data->device);
 	gprs = ofono_gprs_create(modem, 0, "samsungipcmodem", data->device);
 	gc = ofono_gprs_context_create(modem, 0, "samsungipcmodem",
