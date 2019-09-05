@@ -130,7 +130,7 @@ static int samsungipc_enable(struct ofono_modem *modem)
 		return -ENODEV;
 	}
 
-	if (getenv("OFONO_IPC_DEBUG"))
+	if (getenv("OFONO_IPC_DEBUG") || 1)
 		ipc_client_log_callback_register(data->fmt_client,
 						 log_handler, data);
 
